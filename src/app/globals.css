@@ -3,11 +3,13 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: var(--font-satoshi), Arial, Helvetica, sans-serif;
 }
 
 @layer base {
   :root {
+    --primary-color-bg: #f5f7f8;
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;

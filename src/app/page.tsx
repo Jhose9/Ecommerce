@@ -1,10 +1,13 @@
+import Navbar from "@/components/navbar";
+import InfoBar from "@/components/infoBar";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 export default function Home() {
   return (
     <div>
-      <Button className="bg-red-700">Click me</Button>
+      <InfoBar />
+      <Navbar />
+      <Button className="bg-red-700 mt-[4000px]">Click me</Button>
     </div>
   );
 }
