@@ -47,7 +47,7 @@ function Navbar() {
     },
   ];
   return (
-    <div className="min-h-20 bg-white grid grid-cols-[40%_20%_40%] sticky top-[1px] shadow-md z-40">
+    <div className="min-h-20 bg-white grid grid-cols-[40%_20%_40%] sticky top-[0.1px] shadow-md z-40">
       {/* -------------------Navegación---------------------> */}
       <div className="flex items-center">
         <ul className="hidden lg:flex xl:pl-16 pl-3 flex-wrap">
