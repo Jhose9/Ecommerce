@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "./ui/button";
-import InfiniteTicker from "./InfiniteTicker";
+import { Button } from "@/components/ui/button";
+import InfiniteTicker from "@/components/InfiniteTicker";
 import Image from "next/image";
 
 function HeroSection() {

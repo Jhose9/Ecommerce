@@ -1,7 +1,7 @@
 import Navbar from "@/components/navbar";
 import InfoBar from "@/components/infoBar";
 import { Button } from "@/components/ui/button";
-import HeroSection from "@/components/heroSection";
+import HeroSection from "@/components/home/heroSection";
 import BottomNavigationBar from "@/components/bottomNavigationBar";
 
 export default function Home() {

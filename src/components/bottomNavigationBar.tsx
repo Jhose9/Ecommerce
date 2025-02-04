@@ -1,15 +1,10 @@
 import { Heart, ShoppingCart, Store, UserRound } from "lucide-react";
 import React from "react";
-import { LucideIcon } from "lucide-react";
-const Items = ({
-  name,
-  Icon,
-  router,
-}: {
-  name: string;
-  Icon: LucideIcon;
-  router: string;
-}) => {
+import {
+  IBottomNavigationBar,
+  IitemBottomNavigationBar,
+} from "@/types/navbarTypes";
+const Items = ({ name, Icon, router }: IitemBottomNavigationBar) => {
   return (
     <div className="flex flex-col justify-center items-center">
       <Icon />
@@ -18,12 +13,7 @@ const Items = ({
   );
 };
 function BottomNavigationBar() {
-  const items: {
-    id: number;
-    name: string;
-    Icon: LucideIcon;
-    router: string;
-  }[] = [
+  const items: IBottomNavigationBar[] = [
     {
       id: 1,
       name: "tienda",

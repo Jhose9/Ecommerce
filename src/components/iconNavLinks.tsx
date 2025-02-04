@@ -1,19 +1,7 @@
 import React from "react";
-import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-function IconNavLinks({
-  Icons,
-  name,
-  router,
-  size,
-  className,
-}: {
-  Icons: LucideIcon;
-  name: string;
-  router: string;
-  size: number;
-  className?: string;
-}) {
+import { IiconNavLinks } from "@/types/navbarTypes";
+function IconNavLinks({ Icons, name, router, size, className }: IiconNavLinks) {
   return (
     <div className="flex gap-2 hover:opacity-45 hover:cursor-pointer transition">
       <Icons size={size} />
