@@ -7,7 +7,7 @@ export interface Icontent {
 }
 
 export interface IMenuLink {
-  id: number;
+  id?: number;
   name: string;
   content: Icontent[];
   className?: string;

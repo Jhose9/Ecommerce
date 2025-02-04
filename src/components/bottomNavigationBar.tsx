@@ -6,10 +6,10 @@ import {
 } from "@/types/navbarTypes";
 const Items = ({ name, Icon, router }: IitemBottomNavigationBar) => {
   return (
-    <div className="flex flex-col justify-center items-center">
+    <a href={router} className="flex flex-col justify-center items-center">
       <Icon />
       <p className="text-sm w-16 truncate text-center">{name}</p>
-    </div>
+    </a>
   );
 };
 function BottomNavigationBar() {

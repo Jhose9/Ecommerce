@@ -5,18 +5,8 @@ import BurgerMenu from "@/components/burgerMenu";
 import NavbarSearch from "@/components/navbarSearch";
 import IconNavLinks from "./iconNavLinks";
 import Image from "next/image";
-export interface IMenuLink {
-  id: number;
-  name: string;
-  content: Icontent[];
-  className?: string;
-}
+import { IMenuLink } from "@/types/navbarTypes";
 
-interface Icontent {
-  id: number;
-  name: string;
-  router: string;
-}
 const componentStyles = "text-[0.95rem]";
 
 function Navbar() {
@@ -56,7 +46,6 @@ function Navbar() {
               key={id}
               name={name}
               content={content}
-              id={id}
               className={className}
             />
           ))}
@@ -88,13 +77,18 @@ function Navbar() {
             Login / register
           </div>
           <NavbarSearch />
-          <IconNavLinks Icons={Heart} name="2" router="ruta" size={20} />
+          <IconNavLinks
+            Icons={Heart}
+            name="2"
+            router="https://www.youtube.com/"
+            size={20}
+          />
         </div>
         <IconNavLinks
           className="hidden lg:flex"
           Icons={ShoppingCart}
           name="0/0.00€"
-          router="ruta"
+          router="https://www.youtube.com/"
           size={20}
         />
       </div>
