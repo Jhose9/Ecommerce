@@ -15,10 +15,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
 import { Input } from "@/components/ui/input";
-import { IMenuLink } from "./navbar";
 import { cn } from "@/lib/utils";
+import { IMenuLink } from "@/types/navbarTypes";
 function BurgerMenu({ items }: { items: IMenuLink[] }) {
   const SIDES = "left";
   return (
