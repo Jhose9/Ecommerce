@@ -8,7 +8,7 @@ function HeroSection() {
     <div className="relative w-11/12 mx-auto mt-7 h-[27rem] md:h-[30rem]">
       {/* Background Image */}
       <Image
-        src="/heroBg.jpg "
+        src="/heroBg-down.jpg"
         alt="Background"
         fill
         className="absolute inset-0 object-cover z-0 rounded-t-xl"
