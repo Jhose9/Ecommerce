@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import localFont from "next/font/local";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
-const satoshi = localFont({
-  src: [
-    {
-      path: "../../public/fonts/Satoshi-medium.woff2",
-      weight: "700",
-    },
-  ],
-  variable: "--font-satoshi",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"], // Elige los pesos necesarios
 });
 
 export const metadata: Metadata = {
@@ -24,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-page-bg ${satoshi.variable} antialiased`}>
+      <body className={`bg-page-bg ${plusJakartaSans.className} antialiased`}>
         {children}
       </body>
     </html>
