@@ -5,10 +5,10 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { IMenuLink } from "./navbar";
 import { cn } from "@/lib/utils";
+import { IMenuLink } from "@/types/navbarTypes";
 
-function NavListItem({ name, content, id, className }: IMenuLink) {
+function NavListItem({ name, content, className }: IMenuLink) {
   return (
     <div className="relative">
       <NavigationMenu>
