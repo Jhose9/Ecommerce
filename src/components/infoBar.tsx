@@ -1,5 +1,5 @@
-import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 import React from "react";
+import SocialMediaIcons from "./socialMediaIcons";
 
 function InfoBar() {
   return (
@@ -15,26 +15,7 @@ function InfoBar() {
       </div>
 
       <div className="flex h-full items-center justify-end pr-14 xl:pr-32 gap-3">
-        <Facebook
-          size={17}
-          className="text-white hover:opacity-45 hover:cursor-pointer transition "
-        />
-        <Instagram
-          size={17}
-          className="text-white hover:opacity-45 hover:cursor-pointer transition"
-        />
-        <Twitter
-          size={17}
-          className="text-white hover:opacity-45 hover:cursor-pointer transition"
-        />
-        <Linkedin
-          size={17}
-          className="text-white hover:opacity-45 hover:cursor-pointer transition"
-        />
-        <Youtube
-          size={17}
-          className="text-white hover:opacity-45 hover:cursor-pointer transition"
-        />
+        <SocialMediaIcons />
         <div className="border-l h-6 border-gray-500"></div>
         <a className="text-white text-sm hover:opacity-45 transition" href="">
           Contacto

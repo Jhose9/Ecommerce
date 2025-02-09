@@ -5,10 +5,10 @@ import Image from "next/image";
 
 function HeroSection() {
   return (
-    <div className="relative w-11/12 mx-auto mt-7 h-[27rem] md:h-[30rem]">
+    <div className="relative w-11/12 mx-auto mt-6 xl:mt-10 mb-16 h-[27rem] md:h-[30rem]">
       {/* Background Image */}
       <Image
-        src="/heroBg-down.jpg"
+        src="/calidadmediafoto.jpg"
         alt="Background"
         fill
         className="absolute inset-0 object-cover z-0 rounded-t-xl"
