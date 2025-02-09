@@ -39,7 +39,7 @@ function FooterElements({
 }: {
   id?: number;
   title: string;
-  elements: String[];
+  elements: string[];
 }) {
   return (
     <div className="py-6 space-y-4">
