@@ -18,7 +18,7 @@ function ProductCards({
   colorHeart,
 }: IProducts) {
   return (
-    <div className="w-full xl:w-[88%] 2xl:w-[75%] bg-white rounded-b-lg ">
+    <div className="w-full bg-white rounded-b-lg shadow-md">
       <div className="relative">
         <Image
           height={600}
