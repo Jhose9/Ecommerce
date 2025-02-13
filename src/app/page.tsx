@@ -3,6 +3,7 @@ import BottomNavigationBar from "@/components/bottomNavigationBar";
 import Collections from "@/components/home/collections";
 import { IProducts } from "@/types/productsTypes";
 import { photos } from "@/photos";
+import VideoSection from "@/components/videoSection";
 const products: IProducts[] = [
   {
     id: 1,
@@ -82,6 +83,7 @@ export default function Home() {
         products={products}
       />
       <Collections collectionsName="Colección J&B" products={products2} />
+      <VideoSection />
       <BottomNavigationBar />
     </div>
   );
