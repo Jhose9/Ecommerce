@@ -1,5 +1,4 @@
 import HeroSection from "@/components/home/heroSection";
-import BottomNavigationBar from "@/components/bottomNavigationBar";
 import Collections from "@/components/home/collections";
 import { IProducts } from "@/types/productsTypes";
 import { photos } from "@/photos";
