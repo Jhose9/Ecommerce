@@ -84,7 +84,6 @@ export default function Home() {
       />
       <Collections collectionsName="Colección J&B" products={products2} />
       <VideoSection />
-      <BottomNavigationBar />
     </div>
   );
 }

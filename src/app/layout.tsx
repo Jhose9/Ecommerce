@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import Footer from "@/components/footer";
 import InfoBar from "@/components/infoBar";
 import Navbar from "@/components/navbar";
+import BottomNavigationBar from "@/components/bottomNavigationBar";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <BottomNavigationBar />
       </body>
     </html>
   );

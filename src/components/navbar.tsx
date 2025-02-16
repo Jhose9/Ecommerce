@@ -59,6 +59,7 @@ function Navbar() {
       {/* -------------------LOGO---------------------> */}
       <div className="flex justify-center items-center">
         <Image
+          className="hover:cursor-pointer"
           src="/logoblack.png"
           alt="logo"
           width={100}
