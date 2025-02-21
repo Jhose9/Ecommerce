@@ -8,7 +8,7 @@ import { Heart } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-function page() {
+function Page() {
   const { wishList } = useWishList();
   const [WishList, setWishList] = useState<IwishList>({
     total: 0,
@@ -37,8 +37,8 @@ function page() {
               This wishlist is empty.
             </h1>
             <p className="text-center opacity-55 md:w-[60%] md:mx-auto xl:text-lg">
-              You don't have any products in the wishlist yet. You will find a
-              lot of interesting products on our "Shop" page.
+              You dont have any products in the wishlist yet. You will find a
+              lot of interesting products on our Shop page.
             </p>
             <Link className=" mx-auto" href="/">
               <Button className=" mx-auto rounded-3xl py-6 px-9">
@@ -59,6 +59,7 @@ function page() {
         {WishList.products.map(
           ({ description, img, name, price, id, colorHeart }, index) => (
             <ProductCards
+              id={id}
               colorHeart={colorHeart}
               action={Action.delete}
               key={index}
@@ -74,4 +75,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

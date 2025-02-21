@@ -33,7 +33,7 @@ function ProductCards({
 }: IProducts) {
   const { addProduct, deteleProduct } = useWishList();
 
-  const [actionState, setAction] = useState<{
+  const [actionState] = useState<{
     BoleanAction: boolean;
     description: string;
   }>(action == Action.add ? Add : Delete);
