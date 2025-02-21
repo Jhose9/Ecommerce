@@ -8,6 +8,7 @@ import IconNavLinks from "./iconNavLinks";
 import Image from "next/image";
 import { IMenuLink } from "@/types/navbarTypes";
 import { useWishList } from "@/context/AppContext";
+import Link from "next/link";
 
 const componentStyles = "text-[0.95rem]";
 
@@ -70,14 +71,16 @@ function Navbar() {
 
       {/* -------------------LOGO---------------------> */}
       <div className="flex justify-center items-center">
-        <Image
-          className="hover:cursor-pointer"
-          src="/logoblack.png"
-          alt="logo"
-          width={100}
-          height={100}
-          priority
-        />
+        <Link href={"/"}>
+          <Image
+            className="hover:cursor-pointer"
+            src="/logoblack.png"
+            alt="logo"
+            width={100}
+            height={100}
+            priority
+          />
+        </Link>
       </div>
 
       {/* -------------------LOGO---------------------> */}

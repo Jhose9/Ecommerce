@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import InfiniteTicker from "@/components/InfiniteTicker";
 import Image from "next/image";
+import Link from "next/link";
 
 function HeroSection() {
   return (
@@ -22,7 +23,9 @@ function HeroSection() {
           tranquilamente sobre emprendimiento, empresa, finanzas y otros muchos
           temas de la vida.
         </p>
-        <Button className="rounded-3xl p-5">Ver Todos Los Productos</Button>
+        <Link href={"/tienda"}>
+          <Button className="rounded-3xl p-5">Ver Todos Los Productos</Button>
+        </Link>
       </div>
 
       {/* News ticker */}

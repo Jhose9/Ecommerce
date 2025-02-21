@@ -10,10 +10,12 @@ import React, { useEffect, useState } from "react";
 
 function Page() {
   const { wishList } = useWishList();
+
   const [WishList, setWishList] = useState<IwishList>({
     total: 0,
     products: [],
   });
+
   useEffect(() => {
     const localWishList = localStorage.getItem("products");
     if (localWishList != null) {

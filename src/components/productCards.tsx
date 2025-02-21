@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { Heart, X } from "lucide-react";
+import { Heart, X, Check } from "lucide-react";
 import { Action, IProducts } from "@/types/productsTypes";
 import {
   Tooltip,
@@ -32,6 +32,7 @@ function ProductCards({
   action,
 }: IProducts) {
   const { addProduct, deteleProduct } = useWishList();
+  const [isChecked, setIsChecked] = useState(false);
 
   const [actionState] = useState<{
     BoleanAction: boolean;
@@ -49,6 +50,7 @@ function ProductCards({
   function actionFunction() {
     if (action == Action.add) {
       addProduct(valor);
+      setIsChecked(true);
     } else {
       deteleProduct(name);
     }
@@ -73,12 +75,22 @@ function ProductCards({
                 className="absolute top-2 right-2 bg-transparent border-none p-0"
               >
                 {actionState.BoleanAction ? (
-                  <Heart
-                    className={cn(
-                      "hover:cursor-pointer w-4 h-4 lg:w-5 lg:h-5",
-                      colorHeart
-                    )}
-                  />
+                  <>
+                    <Heart
+                      className={cn(
+                        "hover:cursor-pointer w-4 h-4 lg:w-5 lg:h-5",
+                        isChecked ? "hidden" : "block",
+                        colorHeart
+                      )}
+                    />
+                    <Check
+                      className={cn(
+                        "w-4 h-4 lg:w-5 lg:h-5 hidden",
+                        isChecked ? "block" : "hidden",
+                        colorHeart
+                      )}
+                    />
+                  </>
                 ) : (
                   <X
                     className={cn(
