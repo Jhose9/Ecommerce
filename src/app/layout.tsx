@@ -5,10 +5,11 @@ import Footer from "@/components/footer";
 import InfoBar from "@/components/infoBar";
 import Navbar from "@/components/navbar";
 import BottomNavigationBar from "@/components/bottomNavigationBar";
+import { WishListProvider } from "@/context/AppContext";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"], // Elige los pesos necesarios
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -24,11 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`bg-page-bg ${plusJakartaSans.className} antialiased`}>
-        <InfoBar />
-        <Navbar />
-        {children}
-        <Footer />
-        <BottomNavigationBar />
+        <WishListProvider>
+          <InfoBar />
+          <Navbar />
+          {children}
+          <Footer />
+          <BottomNavigationBar />
+        </WishListProvider>
       </body>
     </html>
   );

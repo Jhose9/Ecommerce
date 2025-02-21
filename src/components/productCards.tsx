@@ -1,14 +1,27 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { Heart } from "lucide-react";
-import { IProducts } from "@/types/productsTypes";
+import { Heart, X } from "lucide-react";
+import { Action, IProducts } from "@/types/productsTypes";
 import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { useWishList } from "@/context/AppContext";
+
+const Add = {
+  BoleanAction: true,
+  description: "Add to WishList",
+};
+
+const Delete = {
+  BoleanAction: false,
+  description: "delete to WishList",
+};
 
 function ProductCards({
   name,
@@ -16,7 +29,30 @@ function ProductCards({
   price,
   img,
   colorHeart,
+  action,
 }: IProducts) {
+  const { addProduct, deteleProduct } = useWishList();
+
+  const [actionState, setAction] = useState<{
+    BoleanAction: boolean;
+    description: string;
+  }>(action == Action.add ? Add : Delete);
+
+  const valor: IProducts = {
+    description: description,
+    img: img,
+    name: name,
+    price: price,
+    colorHeart: colorHeart,
+  };
+
+  function actionFunction() {
+    if (action == Action.add) {
+      addProduct(valor);
+    } else {
+      deteleProduct(name);
+    }
+  }
   return (
     <div className="w-full bg-white rounded-b-lg shadow-md">
       <div className="relative">
@@ -27,21 +63,39 @@ function ProductCards({
           src={img}
           className="w-full h-52 md:h-60 2xl:h-96 rounded-t-lg object-cover object-top "
         />
-        <HoverCard closeDelay={55} openDelay={40}>
-          <HoverCardTrigger asChild>
-            <Heart
-              className={cn(
-                "hover:cursor-pointer absolute top-2 right-2 w-4 h-4 lg:w-5 lg:h-5",
-                colorHeart
-              )}
-            />
-          </HoverCardTrigger>
-          <HoverCardContent className="min-w-10 bg-black">
-            <div>
-              <p className="text-white text-[0.8rem] ">Add to WishList</p>
-            </div>
-          </HoverCardContent>
-        </HoverCard>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                onClick={() => {
+                  actionFunction();
+                }}
+                className="absolute top-2 right-2 bg-transparent border-none p-0"
+              >
+                {actionState.BoleanAction ? (
+                  <Heart
+                    className={cn(
+                      "hover:cursor-pointer w-4 h-4 lg:w-5 lg:h-5",
+                      colorHeart
+                    )}
+                  />
+                ) : (
+                  <X
+                    className={cn(
+                      "hover:cursor-pointer w-4 h-4 lg:w-5 lg:h-5",
+                      colorHeart
+                    )}
+                  />
+                )}
+              </button>
+            </TooltipTrigger>
+            <TooltipContent className="bg-black">
+              <p className="text-white text-[0.8rem]">
+                {actionState.description}
+              </p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
       <div className="flex flex-col justify-start items-start pl-4 gap-3">
         <h3 className="font-bold text-sm pt-2">{name}</h3>

@@ -24,7 +24,7 @@ function BottomNavigationBar() {
       id: 2,
       name: "Lista de deseos",
       Icon: Heart,
-      router: "/",
+      router: "/favoritos",
     },
     {
       id: 3,

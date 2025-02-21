@@ -1,15 +1,27 @@
+"use client";
 import { Heart, ShoppingCart, UserRound } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 import NavListItem from "./navListItem";
 import BurgerMenu from "@/components/burgerMenu";
 import NavbarSearch from "@/components/navbarSearch";
 import IconNavLinks from "./iconNavLinks";
 import Image from "next/image";
 import { IMenuLink } from "@/types/navbarTypes";
+import { useWishList } from "@/context/AppContext";
 
 const componentStyles = "text-[0.95rem]";
 
 function Navbar() {
+  const { wishList, updateWishList } = useWishList();
+
+  useEffect(() => {
+    const localWishList = localStorage.getItem("products");
+    if (localWishList != null) {
+      const valor = JSON.parse(localWishList);
+      updateWishList(valor.products, valor.total);
+    }
+  }, []);
+
   const menuLinks: IMenuLink[] = [
     {
       id: 1,
@@ -78,17 +90,18 @@ function Navbar() {
             Login / register
           </div>
           <NavbarSearch />
+
           <IconNavLinks
             Icons={Heart}
-            name="2"
-            router="https://www.youtube.com/"
+            value={wishList.total}
+            router="/favoritos"
             size={20}
           />
         </div>
         <IconNavLinks
           className="hidden lg:flex"
           Icons={ShoppingCart}
-          name="0/0.00€"
+          value={1000}
           router="https://www.youtube.com/"
           size={20}
         />

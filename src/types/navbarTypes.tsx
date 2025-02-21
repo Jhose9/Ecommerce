@@ -15,7 +15,7 @@ export interface IMenuLink {
 
 export interface IiconNavLinks {
   Icons: LucideIcon;
-  name: string;
+  value: number;
   router: string;
   size: number;
   className?: string;

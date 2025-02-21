@@ -2,7 +2,7 @@ import React from "react";
 import ProductCards from "../productCards";
 import { Button } from "../ui/button";
 import { MoveRight } from "lucide-react";
-import { IProducts } from "@/types/productsTypes";
+import { Action, IProducts } from "@/types/productsTypes";
 
 function Collections({
   collectionsName,
@@ -31,6 +31,7 @@ function Collections({
         }) {
           return (
             <ProductCards
+              action={Action.add}
               colorHeart={colorHeart}
               img={img}
               name={name}

@@ -9,10 +9,16 @@ import {
 import { cn } from "@/lib/utils";
 import { Slash } from "lucide-react";
 
-function BreadcrumbComponent({ className }: { className: string }) {
+function BreadcrumbComponent({
+  className,
+  title,
+}: {
+  className: string;
+  title: string;
+}) {
   return (
     <div className={cn("gap-5 items-center h-16", className)}>
-      <h2 className="text-xl font-bold lg:text-2xl">Tienda</h2>
+      <h2 className="text-xl font-bold lg:text-2xl">{title}</h2>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -26,9 +32,9 @@ function BreadcrumbComponent({ className }: { className: string }) {
           <BreadcrumbItem>
             <BreadcrumbLink
               className="font-bold md:text-lg lg:text-xl"
-              href="/tienda"
+              href={`/${title.toLowerCase()}`}
             >
-              Tienda
+              {title}
             </BreadcrumbLink>
           </BreadcrumbItem>
         </BreadcrumbList>
