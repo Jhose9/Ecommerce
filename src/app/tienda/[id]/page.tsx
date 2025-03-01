@@ -46,7 +46,9 @@ const product = [
 ];
 function Page({ params }: { params: Promise<{ id: number }> }) {
   const [count, setcount] = useState(1);
-  // const { id } = use(params); //id comment
+  const { id } = use(params); //id comment
+  console.log(id);
+
   const [isChecked, setIsChecked] = useState(false);
   return (
     <div>
