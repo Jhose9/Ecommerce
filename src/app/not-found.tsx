@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <div className=" flex flex-col items-center min-h-[30rem] gap-5">
       <div className="relative mt-7  w-full min-h-48 flex items-center justify-center">
-        <h3 className="before:content-['404'] before:absolute before:text-[9rem] before:opacity-15 text-3xl font-bold ">
+        <h3 className="before:content-['404'] before:absolute before:text-[9rem] before:opacity-15 text-3xl font-bold">
           NO SE ENCUENTRA
         </h3>
       </div>
