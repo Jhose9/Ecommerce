@@ -13,17 +13,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model products {
+model Products {
 id Int @id @default(autoincrement())
 name String @db.Char(70)
 price Float 
+img String
+collection String
+description String
+sizes Size[]
 details String[]
 composition String[]
+reviews Review[]
 }
+
+
+model Review {
+  id Int @id @default(autoincrement())
+  name String
+  email String 
+  description String
+  products Products @relation(fields: [productsId],references: [id])
+  productsId Int 
+}
+
+
 
 model User {
   id Int @id @default(autoincrement())
   name String
   email String @unique
-  password String @unique
+  number BigInt
+}
+
+enum Size {
+  xs
+  s
+  m
+  l
+  xl
+  xxl
 }
