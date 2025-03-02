@@ -45,11 +45,13 @@ const product = [
   },
 ];
 function Page({ params }: { params: Promise<{ id: number }> }) {
+  const [isChecked, setIsChecked] = useState(false);
+
   const [count, setcount] = useState(1);
+
   const { id } = use(params); //id comment
   console.log(id);
 
-  const [isChecked, setIsChecked] = useState(false);
   return (
     <div>
       <BreadcrumbComponent title="Productos" className="pl-5 mt-5 2xl:pl-36" />

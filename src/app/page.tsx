@@ -4,6 +4,7 @@ import VideoSection from "@/components/videoSection";
 import { products, products2 } from "@/data/productsData";
 
 export default function Home() {
+  
   return (
     <div>
       <HeroSection />

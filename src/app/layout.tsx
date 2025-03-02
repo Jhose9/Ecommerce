@@ -6,6 +6,7 @@ import InfoBar from "@/components/infoBar";
 import Navbar from "@/components/navbar";
 import BottomNavigationBar from "@/components/bottomNavigationBar";
 import { WishListProvider } from "@/context/AppContext";
+import TansTackProvider from "@/components/provider/tansTackProvider";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -28,7 +29,7 @@ export default function RootLayout({
         <WishListProvider>
           <InfoBar />
           <Navbar />
-          {children}
+          <TansTackProvider>{children}</TansTackProvider>
           <Footer />
           <BottomNavigationBar />
         </WishListProvider>

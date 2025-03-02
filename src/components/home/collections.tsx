@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
 import ProductCards from "../productCards";
 import { Button } from "../ui/button";
 import { MoveRight } from "lucide-react";
 import { Action, IProducts } from "@/types/productsTypes";
+import { useProducts } from "@/hooks/use-Products";
 
 function Collections({
   collectionsName,
@@ -11,6 +13,15 @@ function Collections({
   collectionsName: string;
   products: IProducts[];
 }) {
+  const { data, isPending } = useProducts();
+
+  if (isPending) {
+    return <div>...loading</div>;
+  }
+  if (data) {
+    console.log(data);
+  }
+
   return (
     <div className="xl:mt-[2rem] p-4 2xl:w-[85%] md:w-[90%] mx-auto">
       <div className="space-y-4 mb-6 md:flex md:items-end justify-between">
