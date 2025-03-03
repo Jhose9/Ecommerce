@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { useWishList } from "@/context/AppContext";
+import { useRouter } from "next/navigation";
 
 const Add = {
   BoleanAction: true,
@@ -24,6 +25,7 @@ const Delete = {
 };
 
 function ProductCards({
+  id,
   name,
   description,
   price,
@@ -32,6 +34,7 @@ function ProductCards({
   action,
 }: IProducts) {
   const { addProduct, deteleProduct } = useWishList();
+  const router = useRouter();
   const [isChecked, setIsChecked] = useState(false);
 
   const [actionState] = useState<{
@@ -40,6 +43,7 @@ function ProductCards({
   }>(action == Action.add ? Add : Delete);
 
   const valor: IProducts = {
+    id: id,
     description: description,
     img: img,
     name: name,
@@ -115,8 +119,11 @@ function ProductCards({
           {description}
         </p>
         <p className="font-bold">{price}€</p>
-        <Button className="w-5/6 mx-auto rounded-2xl mb-3">
-          <p className="truncate text-[0.8rem] ">Seleccionar opciones</p>
+        <Button
+          onClick={() => router.push(`/tienda/${id}`)}
+          className="w-5/6 mx-auto rounded-2xl mb-3"
+        >
+          <p className="truncate text-[0.8rem]">Seleccionar opciones</p>
         </Button>
       </div>
     </div>

@@ -1,13 +1,19 @@
+"use client";
 import React from "react";
 import ProductCards from "@/components/productCards";
 import BreadcrumbComponent from "@/components/breadcrumbComponent";
 import PriceFilterClothing from "@/components/priceFilterClothing";
-import { products } from "@/data/productsData";
 import PriceFilterClothingMobile from "@/components/priceFilterClothingMobile";
 import OrderSelect from "@/components/orderSelect";
-import { Action } from "@/types/productsTypes";
+import { Action, IProducts } from "@/types/productsTypes";
+import { useProducts } from "@/hooks/use-Products";
+import StoreSkeleton from "@/components/storeSkeleton";
 
 function page() {
+  const { data, isPending } = useProducts();
+  if (isPending) {
+    return <StoreSkeleton />;
+  }
   return (
     <div className="lg:grid lg:grid-cols-[20%_80%] 2xl:grid-cols-[25%_75%]">
       {/* <--------------- busqueda de produtos en lg responsive-------------> */}
@@ -29,17 +35,19 @@ function page() {
 
         {/* <----------------Los productos----------------------> */}
         <div className="grid grid-cols-2 gap-3 mb-16 md:grid-cols-3 lg:grid-cols-4 ">
-          {products.map(({ description, img, name, price, colorHeart, id }) => (
-            <ProductCards
-              action={Action.add}
-              key={id}
-              description={description}
-              img={img}
-              name={name}
-              price={price}
-              colorHeart={colorHeart}
-            />
-          ))}
+          {data &&
+            data?.map(({ description, img, name, price, id }: IProducts) => (
+              <ProductCards
+                id={id}
+                action={Action.add}
+                key={id}
+                description={description}
+                img={img}
+                name={name}
+                price={price}
+                colorHeart={"text-white"}
+              />
+            ))}
         </div>
         {/* <----------------Los productos----------------------> */}
       </div>
