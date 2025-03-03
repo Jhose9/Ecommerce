@@ -9,7 +9,7 @@ import { Action, IProducts } from "@/types/productsTypes";
 import { useProducts } from "@/hooks/use-Products";
 import StoreSkeleton from "@/components/storeSkeleton";
 
-function page() {
+function Page() {
   const { data, isPending } = useProducts();
   if (isPending) {
     return <StoreSkeleton />;
@@ -55,4 +55,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
