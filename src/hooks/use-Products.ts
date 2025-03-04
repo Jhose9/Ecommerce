@@ -35,3 +35,19 @@ export const useProductsByCollection = (collection: Collection) => {
     queryFn: () => fetchProductsByCollection(collection),
   });
 };
+
+const fetchProductsByName = async (name: string) => {
+  const valor = await fetch("/api/products/search", {
+    method: "POST",
+    body: JSON.stringify({ name: name }),
+  });
+  const data = await valor.json();
+  return data;
+};
+
+export const useProductsByName = (name: string) => {
+  return useQuery({
+    queryKey: ["name", name],
+    queryFn: () => fetchProductsByName(name),
+  });
+};

@@ -56,7 +56,7 @@ function Page({ params }: { params: Promise<{ id: number }> }) {
               width={900}
               alt="product image"
               src={data.img}
-              className="h-[90%] w-[90%] md:w-[90%] 2xl:w-[80%]  object-cover rounded-2xl"
+              className="h-[90%] w-[90%] md:w-[90%] 2xl:w-[80%]  object-cover object-top rounded-2xl"
             />
           </div>
 
@@ -69,7 +69,12 @@ function Page({ params }: { params: Promise<{ id: number }> }) {
                 <p className="font-bold text-xl 2xl:text-2xl">{data.price}</p>
                 <span className="font-bold text-xl">€</span>
               </div>
-
+              <div>
+                <h2 className="font-bold opacity-75">Desciption</h2>
+                <p className="opacity-45 text-sm font-semibold my-1 xl:text-[0.9rem]">
+                  {data.description}
+                </p>
+              </div>
               <ProductFields title="Detalles" array={data.details} />
               <ProductFields title="Composición" array={data.composition} />
 

@@ -1,5 +1,6 @@
-import { Menu, Search } from "lucide-react";
-import React from "react";
+"use client";
+import { Menu } from "lucide-react";
+import React, { useState } from "react";
 import {
   Sheet,
   SheetContent,
@@ -15,15 +16,26 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Input } from "@/components/ui/input";
+
 import { cn } from "@/lib/utils";
 import { IMenuLink } from "@/types/navbarTypes";
+import NavbarSearchMobile from "./navbarSearchMobile";
 function BurgerMenu({ items }: { items: IMenuLink[] }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleSelectProduct = () => {
+    setIsOpen(false);
+  };
   const SIDES = "left";
   return (
     <div>
-      <Sheet key={SIDES}>
-        <SheetTrigger asChild>
+      <Sheet open={isOpen} onOpenChange={setIsOpen} key={SIDES}>
+        <SheetTrigger
+          onClick={() => {
+            setIsOpen(true);
+          }}
+          asChild
+        >
           <Menu />
         </SheetTrigger>
         <SheetContent className="p-0 py-10 px-3" side={SIDES}>
@@ -31,10 +43,7 @@ function BurgerMenu({ items }: { items: IMenuLink[] }) {
             <SheetTitle></SheetTitle>
             <SheetDescription></SheetDescription>
           </SheetHeader>
-          <div className="flex gap-3 items-center p-0">
-            <Input className="" placeholder="Buscar productos" />
-            <Search size={30} />
-          </div>
+          <NavbarSearchMobile funcion={handleSelectProduct} />
           <div>
             <Accordion type="single" collapsible className="w-full">
               {items.map(({ id, name, content, className }) => (

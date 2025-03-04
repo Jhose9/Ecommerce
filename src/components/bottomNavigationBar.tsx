@@ -18,7 +18,7 @@ function BottomNavigationBar() {
       id: 1,
       name: "tienda",
       Icon: Store,
-      router: "/",
+      router: "/tienda",
     },
     {
       id: 2,

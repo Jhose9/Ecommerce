@@ -28,8 +28,10 @@ export default function RootLayout({
       <body className={`bg-page-bg ${plusJakartaSans.className} antialiased`}>
         <WishListProvider>
           <InfoBar />
-          <Navbar />
-          <TansTackProvider>{children}</TansTackProvider>
+          <TansTackProvider>
+            <Navbar />
+            {children}
+          </TansTackProvider>
           <Footer />
           <BottomNavigationBar />
         </WishListProvider>
