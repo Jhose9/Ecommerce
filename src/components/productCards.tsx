@@ -56,7 +56,7 @@ function ProductCards({
       addProduct(valor);
       setIsChecked(true);
     } else {
-      deteleProduct(name);
+      deteleProduct(id);
     }
   }
   return (

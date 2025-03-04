@@ -19,10 +19,11 @@ import AmountComponent from "@/components/amountComponent";
 import { useProductsBy } from "@/hooks/use-Products";
 import ProductFields from "@/components/productFields";
 import ProductSkeleton from "@/components/productSkeleton";
+import { useWishList } from "@/context/AppContext";
 
 function Page({ params }: { params: Promise<{ id: number }> }) {
   const [isChecked, setIsChecked] = useState(false);
-
+  const { addProduct } = useWishList();
   const [count, setcount] = useState(1);
   const { id } = use(params);
   const { data, isPending } = useProductsBy(id);
@@ -31,6 +32,16 @@ function Page({ params }: { params: Promise<{ id: number }> }) {
     return <ProductSkeleton />;
   }
 
+  function action() {
+    setIsChecked(true);
+    addProduct({
+      id: id,
+      name: data.name,
+      description: data.description,
+      price: data.price,
+      img: data.img,
+    });
+  }
   if (data) {
     return (
       <div>
@@ -88,7 +99,7 @@ function Page({ params }: { params: Promise<{ id: number }> }) {
                   <div className="md:grid md:grid-cols-2">
                     <Heart
                       onClick={() => {
-                        setIsChecked(true);
+                        action();
                       }}
                       className={cn(
                         "hover:cursor-pointer w-6 h-6 mt-5 md:mx-auto md:my-auto",

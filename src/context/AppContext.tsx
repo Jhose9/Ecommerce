@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 
 const WishListContext = createContext<{
   wishList: IwishList;
-  deteleProduct: (name: string) => void;
+  deteleProduct: (id: number) => void;
   addProduct: (newProduct: IProducts) => void;
   updateWishList: (newProduct: IProducts[], total: number) => void;
 }>({
@@ -26,13 +26,13 @@ export function WishListProvider({ children }: { children: React.ReactNode }) {
       products: newProduct,
     });
   }
-  function deteleProduct(name: string) {
+  function deteleProduct(id: number) {
     const productosGuardados = localStorage.getItem("products");
     if (productosGuardados) {
       const productosGuardadosJSON = JSON.parse(productosGuardados).products;
       const total = JSON.parse(productosGuardados).total;
       const newProducts = productosGuardadosJSON.filter(
-        (producto: IProducts) => producto.name !== name
+        (producto: IProducts) => producto.id !== id
       );
       setWishList({ total: wishList.total - 1, products: newProducts });
       localStorage.setItem(
@@ -42,13 +42,13 @@ export function WishListProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  function exists(name: string) {
+  function exists(id: number) {
     const productosGuardados = localStorage.getItem("products");
     let Exist = null;
     if (productosGuardados) {
       const productosGuardadosJSON = JSON.parse(productosGuardados).products;
       Exist = productosGuardadosJSON.some(
-        (product: IProducts) => product.name == name
+        (product: IProducts) => product.id == id
       );
     }
 
@@ -59,7 +59,7 @@ export function WishListProvider({ children }: { children: React.ReactNode }) {
     }
   }
   function addProduct(newProduct: IProducts) {
-    if (!exists(newProduct.name)) {
+    if (!exists(newProduct.id)) {
       setWishList((prev) => ({
         ...prev,
         products: [...prev.products, newProduct],
