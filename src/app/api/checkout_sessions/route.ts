@@ -3,6 +3,10 @@ import { headers } from "next/headers";
 
 import { stripe } from "@/lib/stripe";
 
+interface ApiError extends Error {
+  statusCode?: number;
+}
+
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     const searchParams = new URL(req.url).searchParams;
@@ -30,9 +34,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   } catch (err) {
     const errorMessage =
       err instanceof Error ? err.message : "Error desconocido";
-    return NextResponse.json(
-      { error: errorMessage },
-      { status: (err as any).statusCode || 500 }
-    );
+    const errorStatus =
+      err instanceof Error && "statusCode" in err
+        ? (err as ApiError).statusCode
+        : 500;
+
+    return NextResponse.json({ error: errorMessage }, { status: errorStatus });
   }
 }
