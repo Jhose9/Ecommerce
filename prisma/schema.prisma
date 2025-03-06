@@ -43,6 +43,7 @@ model User {
   name String
   email String @unique
   number BigInt
+  password String
 }
 
 enum Size {

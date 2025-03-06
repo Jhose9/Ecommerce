@@ -20,13 +20,22 @@ import { useProductsBy } from "@/hooks/use-Products";
 import ProductFields from "@/components/productFields";
 import ProductSkeleton from "@/components/productSkeleton";
 import { useWishList } from "@/context/AppContext";
+import { useSearchParams } from "next/navigation";
 
 function Page({ params }: { params: Promise<{ id: number }> }) {
   const [isChecked, setIsChecked] = useState(false);
   const { addProduct } = useWishList();
   const [count, setcount] = useState(1);
   const { id } = use(params);
+
   const { data, isPending } = useProductsBy(id);
+
+  const searchParams = useSearchParams();
+  const canceled = searchParams.get("canceled");
+
+  if (canceled) {
+    console.log("El usuario canceló el pago.");
+  }
 
   if (isPending) {
     return <ProductSkeleton />;
@@ -98,9 +107,21 @@ function Page({ params }: { params: Promise<{ id: number }> }) {
                   <div className="flex">
                     <AmountComponent count={count} setcount={setcount} />
                   </div>
-                  <Button className="rounded-3xl w-11/12 mx-auto">
-                    Añadir al carrito
-                  </Button>
+                  <form
+                    action={`/api/checkout_sessions?quantity=${count}`}
+                    method="POST"
+                  >
+                    <section>
+                      <Button
+                        type="submit"
+                        role="link"
+                        className="rounded-3xl w-11/12 mx-auto"
+                      >
+                        Añadir al carrito
+                      </Button>
+                    </section>
+                  </form>
+
                   <div className="md:grid md:grid-cols-2">
                     <Heart
                       onClick={() => {
