@@ -17,7 +17,10 @@ function InfoBar() {
       <div className="flex h-full items-center justify-end pr-14 xl:pr-32 gap-3">
         <SocialMediaIcons />
         <div className="border-l h-6 border-gray-500"></div>
-        <a className="text-white text-sm hover:opacity-45 transition" href="">
+        <a
+          className="text-white text-sm hover:opacity-45 transition"
+          href="/contacto"
+        >
           Contacto
         </a>
       </div>
