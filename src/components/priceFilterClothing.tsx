@@ -11,7 +11,15 @@ import {
 } from "@/components/ui/accordion";
 import { Colecction } from "@/data/clothesCollectionData";
 
-function PriceFilterClothing({ className }: { className?: string }) {
+function PriceFilterClothing({
+  className,
+  action,
+  handleAction,
+}: {
+  className?: string;
+  action: (number: number) => void;
+  handleAction?: () => void;
+}) {
   const [price, setPrice] = useState(40);
   return (
     <div
@@ -52,7 +60,17 @@ function PriceFilterClothing({ className }: { className?: string }) {
             onValueChange={(value) => setPrice(value[0] * 5)}
           />
           <h2>Precio: {price}€</h2>
-          <Button className="rounded-2xl">Filtrar</Button>
+          <Button
+            onClick={() => {
+              action(price);
+              if (handleAction) {
+                handleAction();
+              }
+            }}
+            className="rounded-2xl"
+          >
+            Filtrar
+          </Button>
         </div>
       </div>
     </div>

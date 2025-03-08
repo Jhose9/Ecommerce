@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   Sheet,
   SheetContent,
@@ -9,11 +10,23 @@ import {
 } from "@/components/ui/sheet";
 import { Logs } from "lucide-react";
 import PriceFilterClothing from "./priceFilterClothing";
-function PriceFilterClothingMobile() {
+function PriceFilterClothingMobile({
+  action,
+}: {
+  action: (number: number) => void;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
   const SIDES = "left";
+  const handleSheet = () => {
+    setIsOpen(false);
+  };
   return (
-    <Sheet>
-      <SheetTrigger>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <SheetTrigger
+        onClick={() => {
+          setIsOpen(true);
+        }}
+      >
         <div className="flex gap-3">
           <Logs />
           <p className="font-bold">Ver columna</p>
@@ -24,7 +37,7 @@ function PriceFilterClothingMobile() {
           <SheetTitle></SheetTitle>
           <SheetDescription></SheetDescription>
         </SheetHeader>
-        <PriceFilterClothing />
+        <PriceFilterClothing handleAction={handleSheet} action={action} />
       </SheetContent>
     </Sheet>
   );
