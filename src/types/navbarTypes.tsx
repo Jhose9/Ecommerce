@@ -9,7 +9,7 @@ export interface Icontent {
 export interface IMenuLink {
   id?: number;
   name: string;
-  content: Icontent[];
+  content: Icontent[] ;
   className?: string;
 }
 

@@ -1,6 +1,6 @@
 "use client";
 import { Heart, ShoppingCart, UserRound } from "lucide-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NavListItem from "./navListItem";
 import BurgerMenu from "@/components/burgerMenu";
 import NavbarSearch from "@/components/navbarSearch";
@@ -9,6 +9,8 @@ import Image from "next/image";
 import { IMenuLink } from "@/types/navbarTypes";
 import { useWishList } from "@/context/AppContext";
 import Link from "next/link";
+import { useProducts } from "@/hooks/use-Products";
+import { IProducts } from "@/types/productsTypes";
 
 const componentStyles = "text-[0.95rem]";
 
@@ -27,25 +29,21 @@ function Navbar() {
     {
       id: 1,
       name: "Colección J&B",
-      content: [{ id: 1, name: "coleccion 1", router: "/" }],
+      content: [
+        { id: 1, name: "Sudadera J&B", router: "/" },
+        { id: 2, name: "Camiseta J&B", router: "/" },
+        { id: 3, name: "Vestido J&B", router: "/" },
+      ],
       className: componentStyles,
     },
     {
       id: 2,
-      name: "Colección A&B",
-      content: [{ id: 1, name: "coleccion 2", router: "/" }],
-      className: componentStyles,
-    },
-    {
-      id: 3,
-      name: "Rogue x J&B",
-      content: [{ id: 1, name: "coleccion 3", router: "/" }],
-      className: componentStyles,
-    },
-    {
-      id: 4,
-      name: "Mastery x J&B",
-      content: [{ id: 1, name: "coleccion 4", router: "/" }],
+      name: "Colección D&B",
+      content: [
+        { id: 1, name: "Sudadera D&B", router: "/" },
+        { id: 2, name: "Camiseta D&B", router: "/" },
+        { id: 3, name: "Vestido D&B", router: "/" },
+      ],
       className: componentStyles,
     },
   ];
