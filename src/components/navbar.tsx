@@ -1,6 +1,6 @@
 "use client";
 import { Heart, ShoppingCart, UserRound } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import NavListItem from "./navListItem";
 import BurgerMenu from "@/components/burgerMenu";
 import NavbarSearch from "@/components/navbarSearch";
@@ -9,8 +9,6 @@ import Image from "next/image";
 import { IMenuLink } from "@/types/navbarTypes";
 import { useWishList } from "@/context/AppContext";
 import Link from "next/link";
-import { useProducts } from "@/hooks/use-Products";
-import { IProducts } from "@/types/productsTypes";
 
 const componentStyles = "text-[0.95rem]";
 
